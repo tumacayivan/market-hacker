@@ -10,7 +10,7 @@ export default function CTA() {
         </h2>
         <p className="mt-4 max-w-lg text-neutral-600">
           Minimal surface. Maximum signal. Step into the Discord for live
-          discussions, resources, and the full stack — or email if you prefer a
+          discussions, resources, and the full stack or email if you prefer a
           direct line.
         </p>
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">

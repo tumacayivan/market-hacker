@@ -31,7 +31,7 @@ export default function Hero() {
           Market Hackers
         </h1>
         <p className="mt-6 max-w-xl text-lg text-neutral-600 sm:text-xl">
-          Decode the Market. Dominate the Game.
+          Hack the Market. Break the System.
         </p>
         <p className="mt-4 text-sm font-medium tracking-wide text-neutral-500">
           Founded by {FOUNDER_NAME}

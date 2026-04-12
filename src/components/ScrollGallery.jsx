@@ -1,9 +1,10 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   CINEMATIC_BEATS,
   CINEMATIC_BEAT_COUNT,
 } from '../config/cinematicBeats.js'
+import { getLenis } from '../hooks/useLenis.js'
 import { useMouseParallax } from '../hooks/useMouseParallax.js'
 import DiscordCta from './DiscordCta.jsx'
 
@@ -20,6 +21,42 @@ function usePrefersReducedMotion() {
     return () => mq.removeEventListener('change', onChange)
   }, [])
   return reduced
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  )
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  )
 }
 
 function BackgroundParallax({ strength, children }) {
@@ -42,10 +79,30 @@ function BackgroundParallax({ strength, children }) {
 export default function ScrollGallery() {
   const sectionRef = useRef(null)
   const imgsRef = useRef([])
+  const scrollTriggerRef = useRef(null)
   const lastBeatRef = useRef(0)
   const [activeBeat, setActiveBeat] = useState(0)
 
   const prefersReduced = usePrefersReducedMotion()
+
+  /** Scroll document so ScrollTrigger progress matches frame index (syncs with scrub). */
+  const goToBeat = useCallback((targetIdx) => {
+    const n = CINEMATIC_BEAT_COUNT
+    if (n <= 1) return
+    const st = scrollTriggerRef.current
+    if (!st || typeof st.start !== 'number' || typeof st.end !== 'number') return
+
+    const clamped = Math.max(0, Math.min(targetIdx, n - 1))
+    const progress = clamped / (n - 1)
+    const y = st.start + progress * (st.end - st.start)
+
+    const lenis = getLenis()
+    if (lenis) {
+      lenis.scrollTo(y, { immediate: false })
+    } else {
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+  }, [])
 
   /** Crossfade weights across the full float range [0 .. n-1] */
   const setImageOpacities = (t) => {
@@ -77,6 +134,8 @@ export default function ScrollGallery() {
     let retryRaf = 0
     let onResize = null
     let attempts = 0
+
+    scrollTriggerRef.current = null
 
     const attach = () => {
       const imgs = imgsRef.current.filter(Boolean)
@@ -120,6 +179,7 @@ export default function ScrollGallery() {
             }
           },
         })
+        scrollTriggerRef.current = st
         return
       }
 
@@ -158,6 +218,8 @@ export default function ScrollGallery() {
 
       onResize = () => ScrollTrigger.refresh()
       window.addEventListener('resize', onResize)
+
+      scrollTriggerRef.current = st
     }
 
     // Two rAFs: ensure all img refs are committed before measuring / pinning
@@ -170,12 +232,19 @@ export default function ScrollGallery() {
       cancelAnimationFrame(rafInner)
       cancelAnimationFrame(retryRaf)
       if (onResize) window.removeEventListener('resize', onResize)
+      scrollTriggerRef.current = null
       st?.kill()
     }
   }, [prefersReduced])
 
   const beat = CINEMATIC_BEATS[activeBeat]
   const isRight = beat.side === 'right'
+  const canStep = CINEMATIC_BEAT_COUNT > 1
+  const atFirst = activeBeat <= 0
+  const atLast = activeBeat >= CINEMATIC_BEAT_COUNT - 1
+
+  const btnRing =
+    'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-300 bg-[#fafafa]/90 text-neutral-900 shadow-sm backdrop-blur-sm transition hover:border-neutral-950 hover:bg-white disabled:pointer-events-none disabled:opacity-35 sm:h-12 sm:w-12'
 
   return (
     <section
@@ -246,11 +315,39 @@ export default function ScrollGallery() {
               <div
                 className={`mt-6 ${isRight ? 'flex justify-end' : 'flex justify-start'}`}
               >
-                <DiscordCta variant="compact">Discuss on Discord</DiscordCta>
+                <DiscordCta variant="compact">Join Discord</DiscordCta>
               </div>
             </article>
           </div>
         </div>
+
+        {/* Prev / next — scroll the pinned range without wheel */}
+        {canStep && (
+          <>
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex w-14 items-center justify-center sm:w-16">
+              <button
+                type="button"
+                className={`pointer-events-auto ${btnRing}`}
+                aria-label="Previous frame"
+                disabled={atFirst}
+                onClick={() => goToBeat(activeBeat - 1)}
+              >
+                <ChevronLeftIcon />
+              </button>
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex w-14 items-center justify-center sm:w-16">
+              <button
+                type="button"
+                className={`pointer-events-auto ${btnRing}`}
+                aria-label="Next frame"
+                disabled={atLast}
+                onClick={() => goToBeat(activeBeat + 1)}
+              >
+                <ChevronRightIcon />
+              </button>
+            </div>
+          </>
+        )}
 
         {/* Step indicator */}
         <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 text-[0.65rem] font-medium tabular-nums tracking-[0.25em] text-neutral-600 sm:bottom-8">

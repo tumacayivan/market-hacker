@@ -26,9 +26,9 @@ export default function App() {
     <div id="app-shell" className="app-shell min-h-[100dvh] bg-[#f9f9f9] text-neutral-950 antialiased">
       <Hero />
       <ScrollGallery />
-      <StoryRail />
-      <About />
-      <Features />
+      {/* <StoryRail /> */}
+      {/* <About /> */}
+      {/* <Features /> */}
       <CTA />
       <footer className="border-t border-neutral-200/80 bg-white px-6 py-10">
         <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-4 text-center text-xs text-neutral-500 sm:flex-row sm:justify-between sm:text-left">
