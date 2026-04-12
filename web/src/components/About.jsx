@@ -1,5 +1,7 @@
 import { useRef } from 'react'
+import { FOUNDER_NAME } from '../config/links.js'
 import { useGsapReveal } from '../hooks/useGsapReveal'
+import DiscordCta from './DiscordCta.jsx'
 
 export default function About() {
   const blockRef = useRef(null)
@@ -24,6 +26,18 @@ export default function About() {
           We are Market Hackers — mastering structure, exploiting liquidity, and
           decoding price behavior.
         </p>
+        <p
+          data-reveal
+          className="mt-8 text-sm leading-relaxed text-neutral-600 sm:text-base"
+        >
+          Founded by{' '}
+          <span className="font-medium text-neutral-800">{FOUNDER_NAME}</span>
+          — building a space for traders who think in systems, risk, and
+          execution, not noise.
+        </p>
+        <div data-reveal className="mt-10 flex justify-center">
+          <DiscordCta variant="outline">Meet the community</DiscordCta>
+        </div>
       </div>
     </section>
   )

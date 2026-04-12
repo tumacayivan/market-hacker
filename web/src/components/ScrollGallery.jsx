@@ -5,6 +5,7 @@ import {
   CINEMATIC_BEAT_COUNT,
 } from '../config/cinematicBeats.js'
 import { useMouseParallax } from '../hooks/useMouseParallax.js'
+import DiscordCta from './DiscordCta.jsx'
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(() =>
@@ -242,6 +243,11 @@ export default function ScrollGallery() {
               <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.95rem]">
                 {beat.body}
               </p>
+              <div
+                className={`mt-6 ${isRight ? 'flex justify-end' : 'flex justify-start'}`}
+              >
+                <DiscordCta variant="compact">Discuss on Discord</DiscordCta>
+              </div>
             </article>
           </div>
         </div>

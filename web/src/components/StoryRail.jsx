@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import DiscordCta from './DiscordCta.jsx'
 
 const PANELS = [
   { k: '01', t: 'Structure' },
@@ -75,6 +76,11 @@ export default function StoryRail() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center border-b border-neutral-200/70 bg-white px-6 py-6 sm:py-8">
+        <DiscordCta variant="outline">
+          Continue the thread on Discord
+        </DiscordCta>
       </div>
     </section>
   )

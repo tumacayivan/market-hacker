@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useGsapReveal } from '../hooks/useGsapReveal'
+import DiscordCta from './DiscordCta.jsx'
 
 const ITEMS = [
   {
@@ -54,6 +55,13 @@ export default function Features() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:mt-16 sm:flex-row sm:gap-6">
+          <DiscordCta variant="primary">Join Discord</DiscordCta>
+          <p className="max-w-md text-center text-sm text-neutral-500 sm:text-left">
+            Trade ideas, sessions, and system updates live with the crew.
+          </p>
         </div>
       </div>
     </section>

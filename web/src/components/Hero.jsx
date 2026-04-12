@@ -1,3 +1,5 @@
+import { FOUNDER_NAME } from '../config/links.js'
+import DiscordCta from './DiscordCta.jsx'
 import { useMouseParallax } from '../hooks/useMouseParallax'
 
 export default function Hero() {
@@ -31,12 +33,16 @@ export default function Hero() {
         <p className="mt-6 max-w-xl text-lg text-neutral-600 sm:text-xl">
           Decode the Market. Dominate the Game.
         </p>
-        <div className="mt-12">
+        <p className="mt-4 text-sm font-medium tracking-wide text-neutral-500">
+          Founded by {FOUNDER_NAME}
+        </p>
+        <div className="mt-10 flex flex-wrap items-center gap-4 sm:mt-12">
+          <DiscordCta variant="primary">Join Discord</DiscordCta>
           <a
             href="#sequence"
-            className="inline-flex items-center justify-center border border-neutral-950 px-8 py-3 text-sm font-medium text-neutral-950 transition-colors duration-300 hover:bg-neutral-950 hover:text-white"
+            className="inline-flex items-center justify-center border border-neutral-950 bg-transparent px-8 py-3 text-sm font-medium text-neutral-950 transition-colors duration-300 hover:bg-neutral-950 hover:text-white"
           >
-            Enter the flow
+            Initialize sequence
           </a>
         </div>
       </div>
