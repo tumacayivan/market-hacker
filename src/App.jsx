@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import BackgroundMusic from './components/BackgroundMusic.jsx'
 import Hero from './components/Hero.jsx'
 import ScrollGallery from './components/ScrollGallery.jsx'
 import StoryRail from './components/StoryRail.jsx'
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div id="app-shell" className="app-shell min-h-[100dvh] bg-[#f9f9f9] text-neutral-950 antialiased">
+      <BackgroundMusic />
       <Hero />
       <ScrollGallery />
       {/* <StoryRail /> */}
