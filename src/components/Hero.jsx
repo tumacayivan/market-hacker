@@ -27,7 +27,7 @@ export default function Hero() {
       >
         {/* Same compact card on every breakpoint — matches ScrollGallery width */}
         <article
-          className="w-full max-w-lg rounded-sm border border-neutral-200/90 bg-[#fafafa]/[0.92] p-4 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md sm:p-5 lg:max-w-[min(100%,440px)]"
+          className="w-full max-w-lg rounded-sm border border-white/25 bg-gradient-to-t from-white/[0.72] via-white/[0.18] to-transparent p-4 shadow-[0_-10px_44px_rgba(255,255,255,0.14),0_-2px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl sm:p-5 lg:max-w-[min(100%,440px)]"
           aria-label="Market Hackers introduction"
         >
           <h1 className="text-[clamp(1.75rem,5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-neutral-950">
