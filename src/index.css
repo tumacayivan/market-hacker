@@ -19,7 +19,9 @@ body {
   min-height: 100dvh;
 }
 
-/* Intro fade — pure CSS so the UI is never stuck at opacity: 0 if GSAP hiccups */
+/* ==========================================================================
+   Intro fade — pure CSS so the UI is never stuck at opacity: 0 if GSAP hiccups
+   ========================================================================== */
 @keyframes app-shell-reveal {
   from {
     opacity: 0;
@@ -33,7 +35,155 @@ body {
   animation: app-shell-reveal 0.85s ease-out 0.05s both;
 }
 
-/* Lenis */
+/* ==========================================================================
+   Hero entrance — staggered rise on hero items via inline animation-delay
+   ========================================================================== */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-fade-up {
+  opacity: 0;
+  animation: hero-fade-up 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes hero-card-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+.hero-card {
+  animation: hero-card-rise 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s both;
+}
+
+/* Scroll line pulse in hero */
+@keyframes scroll-line-pulse {
+  0% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(120%);
+  }
+  100% {
+    transform: translateY(120%);
+  }
+}
+
+.scroll-line-pulse {
+  animation: scroll-line-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ==========================================================================
+   Marquee / ticker strip
+   ========================================================================== */
+@keyframes marquee-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-slide 42s linear infinite;
+  width: max-content;
+}
+
+.marquee-track.paused {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   Blink dot utility
+   ========================================================================== */
+@keyframes blink-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.blink-pulse {
+  animation: blink-pulse 1.4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Gradient sweep (used as a subtle border shimmer)
+   ========================================================================== */
+@keyframes gradient-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.gradient-sweep {
+  background-size: 200% 100%;
+  animation: gradient-sweep 4s linear infinite;
+}
+
+/* ==========================================================================
+   Accordion content transition helper — uses grid-template-rows trick
+   ========================================================================== */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.accordion-content > .inner {
+  overflow: hidden;
+}
+
+.accordion-content[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+/* ==========================================================================
+   Reduced motion — turn off the loud loops
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .hero-card,
+  .scroll-line-pulse,
+  .marquee-track,
+  .blink-pulse,
+  .gradient-sweep,
+  .app-shell {
+    animation: none !important;
+  }
+  .hero-fade-up,
+  .hero-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ==========================================================================
+   Lenis
+   ========================================================================== */
 html.lenis,
 html.lenis body {
   height: auto;
