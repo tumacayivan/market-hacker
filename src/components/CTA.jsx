@@ -16,7 +16,7 @@ export default function CTA() {
   return (
     <section
       id="join"
-      className="relative isolate overflow-hidden bg-neutral-950 px-6 py-28 text-white sm:px-10 sm:py-36"
+      className="relative isolate overflow-hidden bg-neutral-950 px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-10 lg:py-32"
     >
       {/* Animated gradient sweep border on top */}
       <span
@@ -43,7 +43,7 @@ export default function CTA() {
 
       <div
         ref={root}
-        className="relative mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20"
+        className="relative mx-auto grid max-w-5xl items-center gap-8 sm:gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16"
       >
         <div>
           <p
@@ -54,7 +54,7 @@ export default function CTA() {
           </p>
           <h2
             data-reveal
-            className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl"
+            className="mt-4 text-3xl font-semibold leading-[1.05] tracking-tight text-white sm:mt-5 sm:text-5xl"
           >
             Minimal surface.
             <br />
@@ -62,14 +62,14 @@ export default function CTA() {
           </h2>
           <p
             data-reveal
-            className="mt-7 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 sm:mt-7 sm:text-lg"
           >
             Step into the Discord for live discussions, structured reviews, and
             a full stack of trading resources — or email directly if you prefer
             a private line.
           </p>
 
-          <ul data-reveal className="mt-8 space-y-3">
+          <ul data-reveal className="mt-7 space-y-2.5 sm:mt-8 sm:space-y-3">
             {BULLETS.map((b) => (
               <li
                 key={b}
@@ -98,20 +98,20 @@ export default function CTA() {
 
           <div
             data-reveal
-            className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:gap-5"
+            className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:items-start sm:gap-5 md:flex-row"
           >
             <a
               href="https://discord.gg/wMdbFuwR"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-w-[200px] items-center justify-center gap-2 border border-white bg-white px-10 py-3.5 text-sm font-medium text-neutral-950 transition-colors duration-300 hover:bg-neutral-100"
+              className="inline-flex min-w-0 items-center justify-center gap-2 border border-white bg-white px-6 py-3.5 text-sm font-medium text-neutral-950 transition-colors duration-300 hover:bg-neutral-100 sm:min-w-[200px] sm:px-10"
             >
               <span>Join Discord</span>
               <span aria-hidden>→</span>
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="inline-flex min-w-[200px] items-center justify-center gap-2 border border-white/40 bg-transparent px-10 py-3.5 text-sm font-medium text-white transition-colors duration-300 hover:border-white hover:bg-white/10"
+              className="inline-flex min-w-0 items-center justify-center gap-2 border border-white/40 bg-transparent px-6 py-3.5 text-sm font-medium text-white transition-colors duration-300 hover:border-white hover:bg-white/10 sm:min-w-[200px] sm:px-10"
             >
               <span>Email {FOUNDER_NAME.split(' ')[0]}</span>
               <span aria-hidden>↗</span>
@@ -121,12 +121,12 @@ export default function CTA() {
 
         <aside
           data-reveal
-          className="relative border border-white/15 bg-white/[0.03] p-7 backdrop-blur-sm sm:p-9"
+          className="relative border border-white/15 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8 lg:p-9"
         >
           <p className="text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-neutral-400">
             What to expect
           </p>
-          <ol className="mt-8 space-y-7">
+          <ol className="mt-6 space-y-6 sm:mt-8 sm:space-y-7">
             {[
               { n: '01', t: 'Introduce yourself', d: 'Share your timezone, markets, and current process.' },
               { n: '02', t: 'Observe a session', d: 'Sit in on a live review before you trade alongside us.' },

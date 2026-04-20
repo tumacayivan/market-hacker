@@ -2,19 +2,13 @@ import { FOUNDER_NAME } from '../config/links.js'
 import DiscordCta from './DiscordCta.jsx'
 import { useMouseParallax } from '../hooks/useMouseParallax'
 
-const PILLARS = [
-  'Structure',
-  'Liquidity',
-  'Execution',
-]
-
 export default function Hero() {
   const { ref: parallaxRef, style: parallaxStyle } = useMouseParallax(10)
 
   return (
     <header
       id="top"
-      className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden bg-black px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 sm:px-8 lg:px-10 xl:px-14"
+      className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden bg-black px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 sm:px-8 lg:px-10 xl:px-14"
     >
       {/* Background video — loop, muted; file: public/hero-background.mp4 */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
@@ -46,11 +40,11 @@ export default function Hero() {
       {/* Top corner marks — subtle live/system indicators */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between px-5 pt-5 sm:px-8 sm:pt-6 lg:px-10 xl:px-14">
         <div className="hero-fade-up flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.3em] text-white/75" style={{ animationDelay: '0.3s' }}>
-          <span className="relative flex h-2 w-2">
+          {/* <span className="relative flex h-2 w-2">
             <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/70" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          <span>Live · Markets open</span>
+          </span> */}
+          {/* <span>Live · Markets open</span> */}
         </div>
         <div
           className="hero-fade-up hidden items-center gap-4 text-[0.7rem] font-medium uppercase tracking-[0.3em] text-white/65 md:flex"
@@ -75,19 +69,19 @@ export default function Hero() {
       <div
         ref={parallaxRef}
         style={parallaxStyle}
-        className="relative z-10 flex w-full justify-center transition-transform duration-300 ease-out will-change-transform lg:justify-start"
+        className="relative z-10 flex w-full justify-center pb-1 transition-transform duration-300 ease-out will-change-transform lg:justify-start"
       >
         {/* Same compact card on every breakpoint — matches ScrollGallery width */}
         <article
-          className="hero-card w-full max-w-lg rounded-sm border border-white/25 bg-gradient-to-t from-white/[0.72] via-white/[0.18] to-transparent p-5 shadow-[0_-10px_44px_rgba(255,255,255,0.14),0_-2px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl sm:p-6 lg:max-w-[min(100%,460px)]"
+          className="hero-card w-full max-w-lg rounded-sm border border-white/25 bg-gradient-to-t from-white/[0.72] via-white/[0.18] to-transparent p-4 shadow-[0_-10px_44px_rgba(255,255,255,0.14),0_-2px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl sm:p-6 lg:max-w-[min(100%,460px)]"
           aria-label="Market Hackers introduction"
         >
           <div className="hero-fade-up flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-neutral-500" style={{ animationDelay: '0.1s' }}>
             <span className="inline-block h-px w-6 bg-neutral-400" aria-hidden />
-            <span>Est. 2024 · Global</span>
+            <span>Est. 2026 · Global</span>
           </div>
           <h1
-            className="hero-fade-up mt-3 text-[clamp(1.85rem,5.2vw,3.1rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-neutral-950"
+            className="hero-fade-up mt-3 text-[clamp(1.6rem,7.8vw,3.1rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-neutral-950"
             style={{ animationDelay: '0.2s' }}
           >
             Hack the market.
@@ -95,14 +89,14 @@ export default function Hero() {
             <span className="text-neutral-500">Break the system.</span>
           </h1>
           <p
-            className="hero-fade-up mt-3 text-sm leading-relaxed text-neutral-700 sm:text-[0.95rem]"
+            className="hero-fade-up mt-3 text-[0.88rem] leading-relaxed text-neutral-700 sm:text-[0.95rem]"
             style={{ animationDelay: '0.3s' }}
           >
-            A disciplined network of traders decoding structure, liquidity, and
-            execution across FX, crypto, and indices.
+            A quantitative trading community — learning the system, engineering
+            the strategy, and building the tools to exploit market inefficiencies.
           </p>
 
-          <ul
+          {/* <ul
             className="hero-fade-up mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-neutral-600"
             style={{ animationDelay: '0.4s' }}
           >
@@ -112,7 +106,7 @@ export default function Hero() {
                 <span>{p}</span>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <p
             className="hero-fade-up mt-4 text-xs text-neutral-500"
@@ -122,9 +116,9 @@ export default function Hero() {
             <span className="font-semibold text-neutral-700">{FOUNDER_NAME}</span>
           </p>
 
-          <div className="hero-fade-up mt-5 flex flex-wrap items-center gap-3" style={{ animationDelay: '0.6s' }}>
+          <div className="hero-fade-up mt-4 flex flex-wrap items-center gap-3 sm:mt-5" style={{ animationDelay: '0.6s' }}>
             <DiscordCta variant="primary">Join Discord</DiscordCta>
-            <a
+            {/* <a
               href="#about"
               className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-800 underline-offset-4 transition hover:text-neutral-950"
             >
@@ -135,10 +129,12 @@ export default function Hero() {
               >
                 →
               </span>
-            </a>
+            </a> */}
           </div>
         </article>
       </div>
     </header>
   )
 }
+
+ 

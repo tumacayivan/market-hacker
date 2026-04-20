@@ -13,10 +13,22 @@ body {
   min-height: 100dvh;
   background-color: #f9f9f9;
   color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ==========================================================================
@@ -100,13 +112,51 @@ body {
   }
 }
 
+@keyframes marquee-slide-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .marquee-track {
-  animation: marquee-slide 42s linear infinite;
+  animation: marquee-slide 48s linear infinite;
   width: max-content;
+  will-change: transform;
+}
+
+.marquee-track.marquee-reverse {
+  animation-name: marquee-slide-reverse;
+  animation-duration: 60s;
 }
 
 .marquee-track.paused {
   animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .marquee-track {
+    animation-duration: 30s;
+  }
+  .marquee-track.marquee-reverse {
+    animation-duration: 38s;
+  }
+}
+
+/* ==========================================================================
+   Manifesto word reveal — safety fallback (kicks in if JS/GSAP fails)
+   ========================================================================== */
+@keyframes manifesto-word-fallback {
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.manifesto-word {
+  animation: manifesto-word-fallback 0.8s ease 5s forwards;
 }
 
 /* ==========================================================================

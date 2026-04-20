@@ -10,19 +10,19 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#fafafa] px-6 py-28 sm:px-10 sm:py-36"
+      className="relative overflow-hidden bg-[#fafafa] px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32"
     >
       {/* Oversized watermark type in the background — quiet decoration */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-10 left-1/2 z-0 -translate-x-1/2 select-none text-[20vw] font-semibold leading-none tracking-[-0.06em] text-neutral-100 sm:text-[14rem]"
+        className="pointer-events-none absolute -top-4 right-0 z-0 select-none text-[28vw] font-semibold leading-none tracking-[-0.06em] text-neutral-100 sm:-top-8 sm:right-6 sm:text-[20vw] lg:right-10 lg:text-[16rem]"
       >
         MH
       </div>
 
       <div
         ref={blockRef}
-        className="relative z-10 mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20"
+        className="relative z-10 mx-auto grid max-w-6xl items-start gap-10 md:gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16"
       >
         <div>
           <p
@@ -33,28 +33,28 @@ export default function About() {
           </p>
           <h2
             data-reveal
-            className="mt-6 text-3xl font-semibold leading-[1.1] tracking-tight text-neutral-950 sm:text-5xl"
+            className="mt-5 text-2xl font-semibold leading-[1.1] tracking-tight text-neutral-950 sm:mt-6 sm:text-4xl lg:text-5xl"
           >
-            A disciplined network for traders who think in systems.
+            A quantitative trading community built around process, not noise.
           </h2>
           <p
             data-reveal
-            className="mt-8 text-base leading-relaxed text-neutral-700 sm:text-lg"
+            className="mt-6 text-base leading-relaxed text-neutral-700 sm:mt-8 sm:text-lg"
           >
-            Market Hackers is a focused community of traders who have chosen
-            craft over spectacle. We study how price forms — not how it feels —
-            and we build process around the behavior of institutional capital.
+            Market Hackers is a community for traders who want to think in
+            systems. We study how markets are actually structured — liquidity,
+            participants, and behavior — and we build rule-based strategies
+            around that understanding.
           </p>
           <p
             data-reveal
             className="mt-5 text-base leading-relaxed text-neutral-600"
           >
-            No hype. No signals-by-the-minute. We meet in Discord to share
-            structure reads, post-session debriefs, and the quiet discipline of
-            risk management. If you want to compound a real edge, you are in
-            the right place.
+            No hype. No signal-by-the-minute groups. We meet in Discord to
+            share market reads, study sessions, and the work of turning ideas
+            into testable, systematic trading processes.
           </p>
-          <div data-reveal className="mt-10 flex flex-wrap items-center gap-5">
+          <div data-reveal className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-5">
             <DiscordCta variant="primary">Meet the community</DiscordCta>
             <a
               href="#principles"
@@ -73,7 +73,7 @@ export default function About() {
 
         <aside
           data-reveal
-          className="relative flex flex-col justify-between border border-neutral-200 bg-white p-7 sm:p-9"
+          className="relative flex h-full flex-col justify-between border border-neutral-200 bg-white p-6 sm:p-8 lg:p-9"
         >
           <div
             aria-hidden
@@ -83,13 +83,13 @@ export default function About() {
             <p className="text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-neutral-400">
               From the founder
             </p>
-            <blockquote className="mt-6 text-lg leading-relaxed text-neutral-900">
+            <blockquote className="mt-5 text-base leading-relaxed text-neutral-900 sm:mt-6 sm:text-lg">
               &ldquo;I built Market Hackers to surround myself with traders who
               respect the process more than the outcome. Edge is a byproduct of
               structure — we just made the structure visible.&rdquo;
             </blockquote>
           </div>
-          <div className="mt-8 flex items-center gap-4 border-t border-neutral-200 pt-6">
+          <div className="mt-7 flex items-center gap-4 border-t border-neutral-200 pt-5 sm:mt-8 sm:pt-6">
             <span
               aria-hidden
               className="flex h-11 w-11 items-center justify-center rounded-full border border-neutral-950 text-[0.7rem] font-bold tracking-wider text-neutral-950"

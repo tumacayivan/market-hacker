@@ -89,15 +89,15 @@ export default function Features() {
   return (
     <section
       id="capabilities"
-      className="border-t border-neutral-200/80 bg-white px-6 py-24 sm:px-10 sm:py-32"
+      className="border-t border-neutral-200/80 bg-white px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 flex flex-col gap-6 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-10 flex flex-col gap-5 sm:mb-14 sm:flex-row sm:items-end sm:justify-between lg:mb-16">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.35em] text-neutral-500">
               Capabilities
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-950 sm:text-4xl">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-neutral-950 sm:text-4xl">
               Engineered for focus.
             </h2>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-neutral-600 sm:text-base">
@@ -121,13 +121,13 @@ export default function Features() {
 
         <div
           ref={gridRef}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
         >
           {ITEMS.map((item, i) => (
             <article
               key={item.title}
               data-reveal
-              className="group relative flex flex-col overflow-hidden border border-neutral-200 bg-white p-7 transition-all duration-500 hover:-translate-y-1 hover:border-neutral-950 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]"
+              className="group relative flex flex-col overflow-hidden border border-neutral-200 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-neutral-950 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)] sm:p-7"
             >
               {/* Animated sweep line at top on hover */}
               <span
@@ -143,7 +143,7 @@ export default function Features() {
                 <item.Icon />
               </span>
 
-              <h3 className="mt-6 text-lg font-semibold tracking-tight text-neutral-950">
+              <h3 className="mt-5 text-base font-semibold tracking-tight text-neutral-950 sm:mt-6 sm:text-lg">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-neutral-600">
@@ -152,7 +152,7 @@ export default function Features() {
 
               <span
                 aria-hidden
-                className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-neutral-400 transition-colors duration-500 group-hover:text-neutral-950"
+                className="mt-5 inline-flex items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.25em] text-neutral-400 transition-colors duration-500 group-hover:text-neutral-950 sm:mt-6 sm:text-xs"
               >
                 Inside the system
                 <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -161,7 +161,7 @@ export default function Features() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:mt-20 sm:flex-row sm:gap-6">
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-16 sm:flex-row sm:gap-6 lg:mt-20">
           <DiscordCta variant="primary">Join Discord</DiscordCta>
           <p className="max-w-md text-center text-sm text-neutral-500 sm:text-left">
             Trade ideas, live sessions, and system updates — right alongside the

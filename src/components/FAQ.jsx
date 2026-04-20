@@ -53,10 +53,10 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="border-t border-neutral-200/80 bg-white px-6 py-28 sm:px-10 sm:py-36"
+      className="border-t border-neutral-200/80 bg-white px-5 py-20 sm:px-8 sm:py-28 lg:px-10 lg:py-32"
     >
       <div ref={rootRef} className="mx-auto max-w-4xl">
-        <div className="mb-12 text-center sm:mb-16">
+        <div className="mb-10 text-center sm:mb-14 lg:mb-16">
           <p
             data-reveal
             className="text-xs font-medium uppercase tracking-[0.35em] text-neutral-500"
@@ -65,7 +65,7 @@ export default function FAQ() {
           </p>
           <h2
             data-reveal
-            className="mt-3 text-3xl font-semibold tracking-tight text-neutral-950 sm:text-4xl"
+            className="mt-3 text-2xl font-semibold tracking-tight text-neutral-950 sm:text-4xl"
           >
             Questions we hear most.
           </h2>
@@ -87,24 +87,26 @@ export default function FAQ() {
                   type="button"
                   aria-expanded={open}
                   onClick={() => setOpenIdx(open ? -1 : i)}
-                  className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors duration-300 hover:bg-[#fafafa] sm:py-7"
+                  className="group flex w-full items-start justify-between gap-3 py-4 text-left transition-colors duration-300 hover:bg-[#fafafa] sm:items-center sm:gap-6 sm:py-7"
                 >
-                  <span className="flex items-start gap-5">
+                  <span className="flex items-start gap-4 sm:gap-5">
                     <span className="pt-1 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-neutral-400">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-base font-medium tracking-tight text-neutral-950 sm:text-lg">
+                    <span className="text-[0.9rem] font-medium leading-snug tracking-tight text-neutral-950 sm:text-lg">
                       {item.q}
                     </span>
                   </span>
-                  <PlusIcon open={open} />
+                  <span className="pt-1 sm:pt-0">
+                    <PlusIcon open={open} />
+                  </span>
                 </button>
                 <div
-                  className="accordion-content px-12 pr-6"
+                  className="accordion-content pl-12 pr-3 sm:pl-14 sm:pr-6"
                   data-open={open ? 'true' : 'false'}
                 >
                   <div className="inner">
-                    <p className="pb-7 text-sm leading-relaxed text-neutral-600 sm:text-[0.95rem]">
+                    <p className="pb-5 pr-1 text-sm leading-relaxed text-neutral-600 sm:pb-7 sm:pr-2 sm:text-[0.95rem]">
                       {item.a}
                     </p>
                   </div>
@@ -114,7 +116,7 @@ export default function FAQ() {
           })}
         </ul>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:mt-14 sm:flex-row sm:gap-6">
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-14 sm:flex-row sm:gap-6">
           <DiscordCta variant="outline">Ask in Discord</DiscordCta>
           <p className="max-w-md text-center text-sm text-neutral-500 sm:text-left">
             Real answers, from real members — usually within the hour.
